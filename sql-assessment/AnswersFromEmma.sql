@@ -1,5 +1,38 @@
-/*1) Write a query to get the sum of impressions by day.*/
+/* Imported all the data from local files before running the queries in the answers*/
+
+CREATE DATABASE sql_assessment;
 USE sql_assessment;
+
+/*mkt performance*/
+CREATE TABLE marketing_data (
+ date datetime,
+ campaign_id varchar(50),
+ geo varchar(50),
+ cost float,
+ impressions float,
+ clicks float,
+ conversions float
+);
+
+/*website revenue by state and campaign*/
+CREATE TABLE website_revenue (
+ date datetime,
+ campaign_id varchar(50),
+ state varchar(2),
+ revenue float
+);
+
+/*campaigns*/
+CREATE TABLE campaign_info (
+ id int not null primary key auto_increment,
+ name varchar(50),
+ status varchar(50),
+ last_updated_date datetime
+);
+
+/*Assessment Questions*/
+
+/*1) Write a query to get the sum of impressions by day.*/
 
 SELECT cast(date AS date) AS DATE,SUM(impressions) AS total_impressions
 FROM marketing_data
@@ -112,16 +145,6 @@ ORDER BY 4 DESC;
 /*Considering both marketing data like impressions and clicks and also revenue, Friday would be the best day of the week to run ads
 as it has the highest impressions, conversions and total clicks with an average revenue. From advertiser's point of view, 
 impressions, clicks and conversions are the most effective metrics.*/
-
-
-
-
-
-
-
-
-
-
 
 
 
